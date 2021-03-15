@@ -164,6 +164,3 @@ This script compares the clonotypes between two paired samples with immunarch.
 * `trackClonotypes` visualize clonotype tracking between the two samples 
 
 * `clone_select.csv` abundance change of individual clonotypes between the two samples with the fisher's test
-
-
-
