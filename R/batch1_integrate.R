@@ -11,7 +11,7 @@ names(low_cutoff)<-samples
 names(high_cutoff)<-samples
 
 # Read data and data QC
-data_list<-lapply(data_list, FUN = function(sample_data) {
+data_list<-lapply(samples, FUN = function(sample) {
 	sample_data<-Read10X(data.dir = sample)
 	# project should be different for each sample
 	sample_data<-CreateSeuratObject(counts = sample_data, project = sample, assay = "RNA")
@@ -75,7 +75,7 @@ sample_celltype_sum<-table(sample_celltype)
 write.table(x = data.frame(sample_celltype_sum), file = "batch1_cellcount.txt", row.names = F, quote = F)
 
 
-# Rest cell identity by combining sample and cell cluster
+# Reset cell identity by combining sample and cell cluster
 sample_celltype<-paste(comb_data[["orig.ident"]][,1], comb_data[["clusters_0.1"]][,1], sep = "_")
 Idents(comb_data)<-sample_celltype
 
